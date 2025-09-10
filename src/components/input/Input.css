@@ -1,16 +1,59 @@
-.aui-input {
-  width: 100%;
-  padding: 0.625rem 0.75rem;
-  background: var(--aui-color-surface);
+.aui-field { display: grid; gap: 0.375rem; }
+
+.aui-label {
+  font-size: 0.875rem;
   color: var(--aui-color-text);
+}
+
+.aui-input-wrap {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.5rem; /* internal for prefix/suffix */
+  background: var(--aui-color-surface);
   border: 1px solid var(--aui-color-border);
   border-radius: var(--aui-radius);
+  min-height: 44px; /* mobile touch target */
   transition: border-color var(--aui-duration-fast) var(--aui-ease-standard), box-shadow var(--aui-duration-fast) var(--aui-ease-standard);
-  min-height: 44px;
 }
+
+.aui-input-wrap:focus-within {
+  border-color: var(--aui-color-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-color-focus) 25%, transparent);
+}
+
+.aui-input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--aui-color-text);
+  padding: 0.625rem 0; /* vertical padding only; horizontal via wrapper */
+  font-size: 1rem;
+}
+
 .aui-input::placeholder { color: var(--aui-color-text-muted); }
-.aui-input:focus { border-color: var(--aui-color-focus); box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-color-focus) 25%, transparent); outline: none; }
-.aui-field { display: grid; gap: 0.375rem; }
-.aui-label { font-size: 0.875rem; color: var(--aui-color-text); }
+
+.aui-affix { display: inline-flex; align-items: center; gap: 0.375rem; color: var(--aui-color-text-muted); }
+
 .aui-hint { color: var(--aui-color-text-muted); font-size: 0.8125rem; }
 .aui-error { color: var(--aui-color-danger); font-size: 0.8125rem; }
+
+.aui-input--sm .aui-input { font-size: 0.875rem; }
+.aui-input--lg .aui-input { font-size: 1.0625rem; }
+
+.aui-reveal-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--aui-color-text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+.aui-reveal-btn:focus-visible {
+  outline: 2px solid var(--aui-color-focus);
+  outline-offset: 2px;
+}
