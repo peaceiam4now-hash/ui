@@ -1,0 +1,53 @@
+.aui-pagination-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  flex-wrap: wrap;
+}
+
+.aui-pagination-footer__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.aui-pagination-footer__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--aui-color-muted, #475569);
+  font-size: 14px;
+}
+
+.aui-pagination-footer__select {
+  height: 36px;
+  min-width: 72px;
+  padding: 0 8px;
+  border: 1px solid var(--aui-color-border, #e2e8f0);
+  border-radius: 0.5rem;
+  background: var(--aui-color-bg, #fff);
+  color: var(--aui-color-text, #0f172a);
+  font: inherit;
+}
+
+.aui-pagination-footer__range {
+  color: var(--aui-color-muted, #475569);
+  font-size: 14px;
+}
+
+.aui-pagination-footer__right { display: flex; align-items: center; }
+
+.aui-pagination-footer--sm .aui-pagination-footer__select { height: 28px; border-radius: 0.375rem; font-size: 12px; }
+.aui-pagination-footer--lg .aui-pagination-footer__select { height: 44px; border-radius: 0.75rem; font-size: 16px; }
+
+/* Compact: hide the text label, keep only the select */
+.is-compact .aui-pagination-footer__label > span { display: none; }
+
+/* Stack on narrow screens */
+@media (max-width: 520px) {
+  .aui-pagination-footer { flex-direction: column; align-items: stretch; }
+  .aui-pagination-footer__right { justify-content: flex-end; }
+}

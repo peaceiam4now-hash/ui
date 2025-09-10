@@ -7,9 +7,7 @@ export interface ModalProps {
   onClose: () => void;
   title?: React.ReactNode;
   children?: React.ReactNode;
-  /** Close when pressing Escape (default: true) */
   closeOnEsc?: boolean;
-  /** Close when clicking the backdrop (default: true) */
   closeOnBackdrop?: boolean;
 }
 
@@ -49,13 +47,9 @@ export const Modal: React.FC<ModalProps> = ({
       aria-labelledby={title ? titleId : undefined}
       onClick={handleOverlayClick}
     >
-      <div
-        className="aui-modal__content"
-        onClick={(e) => e.stopPropagation()}
-        tabIndex={-1}
-      >
+      <div className="aui-modal__content" onClick={(e) => e.stopPropagation()} tabIndex={-1}>
         <div className="aui-modal__header">
-          {title ? <h2 id={titleId} className="aui-modal__title">{title}</h2> : <span />}
+          {title && <h2 id={titleId} className="aui-modal__title">{title}</h2>}
           <button
             type="button"
             className="aui-modal__close"
