@@ -1,0 +1,37 @@
+.aui-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.aui-tabs__list {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--aui-color-border);
+}
+
+.aui-tabs__tab {
+  --_fg: var(--aui-color-text);
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--_fg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--aui-duration-fast) var(--aui-ease-standard),
+              color var(--aui-duration-fast) var(--aui-ease-standard);
+}
+
+.aui-tabs__tab:hover {
+  color: var(--aui-color-primary);
+}
+
+.aui-tabs__tab--active {
+  border-bottom-color: var(--aui-color-primary);
+  color: var(--aui-color-primary);
+}
+
+.aui-tabs__panel {
+  padding: 1rem 0;
+}
