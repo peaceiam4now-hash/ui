@@ -1,0 +1,76 @@
+:root { --aui-drawer-w: 320px; }
+
+.aui-drawer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 110;
+}
+
+/* Overlay */
+.aui-drawer__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2,6,23,.55);
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+
+/* Panel */
+.aui-drawer__panel {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: var(--aui-drawer-w);
+  max-width: min(90vw, var(--aui-drawer-w));
+  background: var(--aui-color-bg, #fff);
+  color: var(--aui-color-text, #0f172a);
+  border-inline-start: 1px solid var(--aui-color-border, #e2e8f0);
+  outline: none;
+  transform: translateX(-100%);
+  transition: transform .2s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(2,6,23,.25);
+}
+
+.aui-drawer--right .aui-drawer__panel {
+  right: 0;
+  left: auto;
+  border-inline-start: 0;
+  border-inline-end: 1px solid var(--aui-color-border, #e2e8f0);
+  transform: translateX(100%);
+}
+.aui-drawer--left .aui-drawer__panel { left: 0; }
+
+.aui-drawer.is-open { pointer-events: auto; }
+.aui-drawer.is-open .aui-drawer__overlay { opacity: 1; }
+.aui-drawer.is-open.aui-drawer--left  .aui-drawer__panel { transform: translateX(0); }
+.aui-drawer.is-open.aui-drawer--right .aui-drawer__panel { transform: translateX(0); }
+
+/* Header & content */
+.aui-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--aui-color-border, #e2e8f0);
+}
+.aui-drawer__title { margin: 0; font-size: 16px; font-weight: 600; }
+.aui-drawer__close {
+  height: 36px; width: 36px; border-radius: 10px;
+  border: 1px solid var(--aui-color-border, #e2e8f0);
+  background: transparent; cursor: pointer;
+}
+.aui-drawer__body { padding: 12px; overflow: auto; }
+
+/* Dark scheme */
+.aui-navbar--dark ~ .aui-drawer .aui-drawer__panel {
+  background: #0b1220; color: #e5e7eb; border-color: rgba(255,255,255,.12);
+}
+.aui-navbar--dark ~ .aui-drawer .aui-drawer__overlay { background: rgba(0,0,0,.55); }
+
+/* Layout helper (push content) */
+.aui-drawer-layout { transition: padding .2s ease; }
+.aui-drawer-layout.is-left-open  { padding-left:  var(--aui-drawer-w); }
+.aui-drawer-layout.is-right-open { padding-right: var(--aui-drawer-w); }
