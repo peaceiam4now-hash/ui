@@ -1,0 +1,16 @@
+.aui-switch {
+  display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
+}
+.aui-switch__track {
+  inline-size: 44px; block-size: 26px; border-radius: 999px;
+  background: var(--aui-color-border); position: relative; transition: background var(--aui-duration-fast) var(--aui-ease-standard);
+}
+.aui-switch__thumb {
+  inline-size: 22px; block-size: 22px; border-radius: 50%;
+  background: #fff; position: absolute; top: 2px; left: 2px;
+  box-shadow: var(--aui-shadow);
+  transition: transform var(--aui-duration-fast) var(--aui-ease-standard);
+}
+.aui-switch[data-checked="true"] .aui-switch__track { background: var(--aui-color-primary); }
+.aui-switch[data-checked="true"] .aui-switch__thumb { transform: translateX(18px); }
+.aui-switch__input { position: absolute; opacity: 0; pointer-events: none; }

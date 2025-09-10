@@ -1,0 +1,53 @@
+:root {
+  /* Colors: light */
+  --aui-color-bg: #ffffff;
+  --aui-color-surface: #f7f8fa;
+  --aui-color-text: #0f172a;
+  --aui-color-text-muted: #475569;
+  --aui-color-primary: #1e3a8a; /* royal blue */
+  --aui-color-primary-contrast: #ffffff;
+  --aui-color-border: #e2e8f0;
+  --aui-color-focus: #60a5fa;
+  --aui-color-success: #16a34a;
+  --aui-color-warning: #d97706;
+  --aui-color-danger: #dc2626;
+
+  /* Typography */
+  --aui-font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+
+  /* Radius & shadow */
+  --aui-radius: 0.75rem;
+  --aui-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+
+  /* Motion */
+  --aui-duration-fast: 120ms;
+  --aui-duration-normal: 180ms;
+  --aui-duration-slow: 280ms;
+  --aui-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+  --aui-color-bg: #0b1220;
+  --aui-color-surface: #0f172a;
+  --aui-color-text: #e5e7eb;
+  --aui-color-text-muted: #cbd5e1;
+  --aui-color-primary: #60a5fa; /* sky blue */
+  --aui-color-primary-contrast: #0b1220;
+  --aui-color-border: #1f2937;
+  --aui-color-focus: #93c5fd;
+  --aui-color-success: #22c55e;
+  --aui-color-warning: #f59e0b;
+  --aui-color-danger: #ef4444;
+}
+
+/* Mobile-first base */
+html { font-size: 16px; }
+body {
+  margin: 0;
+  background: var(--aui-color-bg);
+  color: var(--aui-color-text);
+  font-family: var(--aui-font-family);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

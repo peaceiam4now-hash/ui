@@ -1,0 +1,8 @@
+.aui-tooltip {
+  position: relative; display: inline-block;
+}
+.aui-tooltip__bubble {
+  position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+  background: #0b1220; color: #fff; padding: 0.375rem 0.5rem; border-radius: 0.375rem; font-size: 0.8125rem;
+  box-shadow: var(--aui-shadow); white-space: nowrap; z-index: 10;
+}

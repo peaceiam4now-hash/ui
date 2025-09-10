@@ -1,0 +1,13 @@
+.aui-modal__backdrop {
+  position: fixed; inset: 0; background: color-mix(in srgb, #0b1220 65%, transparent);
+  display: grid; place-items: center;
+}
+.aui-modal__dialog {
+  background: var(--aui-color-surface);
+  color: var(--aui-color-text);
+  border-radius: var(--aui-radius);
+  box-shadow: var(--aui-shadow);
+  inline-size: min(90vw, 640px);
+  padding: 1rem;
+}
+@media (min-width: 768px) { .aui-modal__dialog { padding: 1.25rem; } }

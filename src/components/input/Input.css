@@ -1,0 +1,16 @@
+.aui-input {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  background: var(--aui-color-surface);
+  color: var(--aui-color-text);
+  border: 1px solid var(--aui-color-border);
+  border-radius: var(--aui-radius);
+  transition: border-color var(--aui-duration-fast) var(--aui-ease-standard), box-shadow var(--aui-duration-fast) var(--aui-ease-standard);
+  min-height: 44px;
+}
+.aui-input::placeholder { color: var(--aui-color-text-muted); }
+.aui-input:focus { border-color: var(--aui-color-focus); box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-color-focus) 25%, transparent); outline: none; }
+.aui-field { display: grid; gap: 0.375rem; }
+.aui-label { font-size: 0.875rem; color: var(--aui-color-text); }
+.aui-hint { color: var(--aui-color-text-muted); font-size: 0.8125rem; }
+.aui-error { color: var(--aui-color-danger); font-size: 0.8125rem; }
