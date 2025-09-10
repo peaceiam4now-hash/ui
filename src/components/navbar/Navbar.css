@@ -1,0 +1,105 @@
+:root {
+  --aui-navbar-h: 64px;
+}
+
+.aui-navbar {
+  position: relative;
+  z-index: 100;
+  color: var(--aui-color-text, #0f172a);
+  background: var(--aui-color-bg, #ffffff);
+  transition: box-shadow .15s ease, background .15s ease;
+}
+.aui-navbar.is-sticky { position: sticky; top: 0; }
+.aui-navbar.is-fixed  { position: fixed; top: 0; left: 0; right: 0; }
+
+.aui-navbar.is-transparent { background: transparent; }
+.aui-navbar.is-elevated { box-shadow: 0 6px 18px rgba(2,6,23,.08), 0 1px 0 rgba(2,6,23,.06); }
+
+.aui-navbar--dark { color: #e5e7eb; background: #0b1220; }
+.aui-navbar--dark.is-transparent { background: transparent; }
+
+.aui-navbar__inner {
+  min-height: var(--aui-navbar-h);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  margin: 0 auto;
+  width: min(var(--aui-navbar-maxw, 1200px), 100%);
+}
+
+.aui-navbar__brand { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.aui-navbar__brand > * { inline-size: max-content; }
+
+.aui-navbar__nav { display: none; }
+.aui-navbar__list { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.aui-navbar__link {
+  position: relative;
+  display: inline-flex; align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+.aui-navbar__link:hover { background: var(--aui-color-surface, #f7f8fa); }
+.aui-navbar--dark .aui-navbar__link:hover { background: rgba(255,255,255,.06); }
+.aui-navbar__link.is-active { font-weight: 600; }
+.aui-navbar__link.is-disabled { opacity: .5; cursor: not-allowed; }
+
+.aui-navbar__actions { display: none; gap: 8px; align-items: center; }
+
+.aui-navbar__toggle {
+  height: 40px; width: 40px; border-radius: 10px;
+  border: 1px solid var(--aui-color-border, #e2e8f0);
+  background: transparent; cursor: pointer;
+  display: inline-grid; place-items: center;
+}
+.aui-navbar--dark .aui-navbar__toggle { border-color: rgba(255,255,255,.18); }
+.aui-navbar__burger, .aui-navbar__burger::before, .aui-navbar__burger::after {
+  content: ""; display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .15s ease, opacity .15s ease;
+}
+.aui-navbar__burger::before { transform: translateY(-6px); }
+.aui-navbar__burger::after  { transform: translateY(6px); }
+.aui-navbar__burger.is-open  { background: transparent; }
+.aui-navbar__burger.is-open::before { transform: rotate(45deg); }
+.aui-navbar__burger.is-open::after  { transform: rotate(-45deg); }
+
+@media (min-width: 768px) {
+  .aui-navbar__nav { display: block; }
+  .aui-navbar__actions { display: flex; }
+  .aui-navbar__toggle { display: none; }
+  .aui-navbar__inner { grid-template-columns: auto 1fr auto; }
+}
+
+.aui-navbar__mobile {
+  position: fixed; inset: 0; background: rgba(2,6,23,.55);
+  opacity: 0; pointer-events: none; transition: opacity .15s ease;
+}
+.aui-navbar__mobile.is-open { opacity: 1; pointer-events: auto; }
+.aui-navbar__mobile-panel {
+  position: absolute; left: 0; right: 0; top: 0;
+  padding-top: var(--aui-navbar-h);
+  background: var(--aui-color-bg, #ffffff);
+  color: var(--aui-color-text, #0f172a);
+  border-bottom: 1px solid var(--aui-color-border, #e2e8f0);
+  box-shadow: 0 16px 40px rgba(2,6,23,.15);
+}
+.aui-navbar--dark .aui-navbar__mobile-panel {
+  background: #0b1220; color: #e5e7eb; border-color: rgba(255,255,255,.12);
+}
+
+.aui-navbar__mobile-list { list-style: none; margin: 0; padding: 8px 12px; display: grid; gap: 4px; }
+.aui-navbar__mobile-link {
+  width: 100%; text-align: left; padding: 12px 10px; border-radius: 10px;
+  background: transparent; border: 0; color: inherit; text-decoration: none; cursor: pointer;
+}
+.aui-navbar__mobile-link:hover { background: var(--aui-color-surface, #f7f8fa); }
+.aui-navbar--dark .aui-navbar__mobile-link:hover { background: rgba(255,255,255,.06); }
+.aui-navbar__mobile-link.is-active { font-weight: 600; }
+.aui-navbar__mobile-actions { padding: 8px 12px 14px; display: flex; gap: 8px; border-top: 1px solid var(--aui-color-border, #e2e8f0); }
+.aui-navbar--dark .aui-navbar__mobile-actions { border-color: rgba(255,255,255,.12); }
