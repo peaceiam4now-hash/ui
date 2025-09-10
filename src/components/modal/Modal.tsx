@@ -1,44 +1,75 @@
 import * as React from "react";
+import { createPortal } from "react-dom";
 import "./Modal.css";
 
-export interface ModalProps extends React.DialogHTMLAttributes<HTMLDivElement> {
+export interface ModalProps {
   open: boolean;
   onClose: () => void;
-  title?: string;
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  title?: React.ReactNode;
+  children?: React.ReactNode;
+  /** Close when pressing Escape (default: true) */
+  closeOnEsc?: boolean;
+  /** Close when clicking the backdrop (default: true) */
+  closeOnBackdrop?: boolean;
 }
 
-export const Modal: React.FC<ModalProps> = ({ open, onClose, title, children, initialFocusRef, ...rest }) => {
-  const backdropRef = React.useRef<HTMLDivElement>(null);
-  const lastFocused = React.useRef<HTMLElement | null>(null);
+export const Modal: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  title,
+  children,
+  closeOnEsc = true,
+  closeOnBackdrop = true
+}) => {
+  const titleId = React.useId();
 
   React.useEffect(() => {
-    if (open) {
-      lastFocused.current = document.activeElement as HTMLElement | null;
-      setTimeout(() => {
-        const target = initialFocusRef?.current || backdropRef.current?.querySelector<HTMLElement>("[data-autofocus]");
-        target?.focus();
-      }, 0);
-      const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-      document.addEventListener("keydown", onKey);
-      return () => document.removeEventListener("keydown", onKey);
-    } else {
-      lastFocused.current?.focus?.();
-    }
-  }, [open, onClose]);
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && closeOnEsc) onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open, closeOnEsc, onClose]);
 
   if (!open) return null;
 
-  const onBackdrop = (e: React.MouseEvent) => { if (e.target === e.currentTarget) onClose(); };
+  const handleOverlayClick = closeOnBackdrop ? onClose : undefined;
 
-  return (
-    <div className="aui-modal__backdrop" role="presentation" onMouseDown={onBackdrop} ref={backdropRef}>
-      <div className="aui-modal__dialog" role="dialog" aria-modal="true" aria-labelledby={title ? "aui-modal-title" : undefined} {...rest}>
-        {title && <h2 id="aui-modal-title" style={{ marginTop: 0 }}>{title}</h2>}
-        {children}
-        <button data-autofocus style={{ position: "absolute", inset: "-9999px" }} aria-hidden />
+  return createPortal(
+    <div
+      className="aui-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={title ? titleId : undefined}
+      onClick={handleOverlayClick}
+    >
+      <div
+        className="aui-modal__content"
+        onClick={(e) => e.stopPropagation()}
+        tabIndex={-1}
+      >
+        <div className="aui-modal__header">
+          {title ? <h2 id={titleId} className="aui-modal__title">{title}</h2> : <span />}
+          <button
+            type="button"
+            className="aui-modal__close"
+            aria-label="Close"
+            onClick={onClose}
+          >
+            ×
+          </button>
+        </div>
+        <div className="aui-modal__body">{children}</div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
+
 export default Modal;

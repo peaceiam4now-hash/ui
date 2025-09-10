@@ -8,8 +8,20 @@ const Demo = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open modal</Button>
-      <Modal open={open} onClose={() => setOpen(false)} title="AstronautUI Modal">
-        <p>Mobile-first, accessible modal. Press Esc or click backdrop to close.</p>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        title="AstronautUI Modal"
+        closeOnBackdrop
+        closeOnEsc
+      >
+        <p>Mobile-first, accessible modal.</p>
+        <ul>
+          <li>Click the × icon (top-right)</li>
+          <li>Click the backdrop</li>
+          <li>Press Esc</li>
+          <li>Or use the button below</li>
+        </ul>
         <Button onClick={() => setOpen(false)}>Close</Button>
       </Modal>
     </>

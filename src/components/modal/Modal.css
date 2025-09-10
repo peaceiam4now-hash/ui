@@ -1,13 +1,51 @@
-.aui-modal__backdrop {
-  position: fixed; inset: 0; background: color-mix(in srgb, #0b1220 65%, transparent);
-  display: grid; place-items: center;
+.aui-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(2, 6, 23, 0.55); /* dim backdrop */
+  z-index: 1000;
 }
-.aui-modal__dialog {
-  background: var(--aui-color-surface);
-  color: var(--aui-color-text);
-  border-radius: var(--aui-radius);
-  box-shadow: var(--aui-shadow);
-  inline-size: min(90vw, 640px);
+
+.aui-modal__content {
+  width: min(600px, 92vw);
+  max-height: 85vh;
+  background: var(--aui-color-bg, #ffffff);
+  color: var(--aui-color-text, #0f172a);
+  border-radius: var(--aui-radius, 0.75rem);
+  box-shadow: var(--aui-shadow, 0 20px 60px rgba(2,6,23,.25));
+  overflow: hidden;
+  pointer-events: auto; /* ensure content is clickable */
+}
+
+.aui-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
   padding: 1rem;
+  border-bottom: 1px solid var(--aui-color-border, #e2e8f0);
 }
-@media (min-width: 768px) { .aui-modal__dialog { padding: 1.25rem; } }
+
+.aui-modal__title {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.aui-modal__close {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+.aui-modal__close:hover {
+  background: var(--aui-color-surface, #f7f8fa);
+}
+
+.aui-modal__body {
+  padding: 1rem 1rem 1.25rem;
+  overflow: auto;
+}
