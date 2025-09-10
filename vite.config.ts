@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+
 export default defineConfig({
   plugins: [react()],
   build: {
@@ -8,6 +9,8 @@ export default defineConfig({
       name: "AstronautUI",
       fileName: "index"
     },
-    rollupOptions: { external: ["react", "react-dom"] }
+    rollupOptions: {
+      external: ["react", "react-dom"]
+    }
   }
 });

@@ -8,7 +8,7 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["vite/client", "jest", "vitest/globals", "@testing-library/jest-dom"],
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
       "@tokens/*": ["src/tokens/*"],
@@ -16,5 +16,12 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src", "stories", "tests", ".storybook", "vite.config.ts", "vitest.config.ts"]
+  "include": [
+    "src",
+    "stories",
+    "tests",
+    ".storybook",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ]
 }
