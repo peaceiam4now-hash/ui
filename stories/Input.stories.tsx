@@ -1,35 +1,36 @@
-import type { Meta, StoryObj } from "@storybook/react";
+/* @ts-nocheck */
+import React from "react";
+import { Field } from "../src/components/field/Field";
 import { Input } from "../src/components/input/Input";
-import * as React from "react";
+import { Button } from "../src/components/button/Button";
 
-const meta: Meta<typeof Input> = {
-  title: "Core/Input",
-  component: Input,
-  argTypes: {
-    size: { control: "inline-radio", options: ["sm", "md", "lg"] },
-    fullWidth: { control: "boolean" },
-    revealPasswordToggle: { control: "boolean" }
-  }
-};
-export default meta;
+export default { title: "Forms/Input" };
 
-type Story = StoryObj<typeof Input>;
-
-export const Basic: Story = { args: { label: "Email", placeholder: "you@domain.com" } };
-export const WithPrefix: Story = { args: { label: "Search", placeholder: "Type to search", prefix: "🔍" } };
-export const WithSuffix: Story = { args: { label: "Amount", placeholder: "0.00", suffix: "USD" } };
-export const Error: Story = { args: { label: "Email", placeholder: "you@domain.com", error: "Invalid email address" } };
-export const Hint: Story = { args: { label: "Username", placeholder: "yourname", hint: "3–20 characters, letters & numbers" } };
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: "grid", gap: "0.75rem", maxWidth: 360 }}>
-      <Input label="Small" size="sm" placeholder="Small" />
-      <Input label="Medium" size="md" placeholder="Medium" />
-      <Input label="Large" size="lg" placeholder="Large" />
+export const Basic = () => (
+  <div style={{ padding: 24, display: "grid", gap: 16, maxWidth: 420 }}>
+    <Field label="Name" description="What should we call you?">
+      <Input placeholder="Jane Doe" />
+    </Field>
+    <Field label="Email" required error="Please enter a valid email">
+      <Input type="email" placeholder="jane@example.com" />
+    </Field>
+    <div style={{ display: "flex", gap: 8 }}>
+      <Button>Submit</Button>
+      <Button variant="secondary">Cancel</Button>
     </div>
-  )
-};
-export const PasswordReveal: Story = {
-  args: { label: "Password", type: "password", placeholder: "••••••••", revealPasswordToggle: true }
-};
-export const FullWidth: Story = { args: { label: "Full name", placeholder: "John Appleseed", fullWidth: true } };
+  </div>
+);
+
+export const Sizes = () => (
+  <div style={{ padding: 24, display: "grid", gap: 12, maxWidth: 420 }}>
+    <Field label="Small">
+      <Input size="sm" placeholder="Small size" />
+    </Field>
+    <Field label="Medium (default)">
+      <Input size="md" placeholder="Medium size" />
+    </Field>
+    <Field label="Large">
+      <Input size="lg" placeholder="Large size" />
+    </Field>
+  </div>
+);

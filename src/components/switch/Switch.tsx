@@ -1,44 +1,46 @@
 import * as React from "react";
 import "./Switch.css";
+import { cx } from "../../utils/cx";
 
-export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
-  label?: string;
+function useControllable({
+  value, defaultValue, onChange
+}: { value?: boolean; defaultValue?: boolean; onChange?: (v:boolean)=>void; }) {
+  const [u, setU] = React.useState(!!defaultValue);
+  const isCtrl = value !== undefined;
+  const state = isCtrl ? !!value : u;
+  const set = React.useCallback((v:boolean) => { if (!isCtrl) setU(v); onChange?.(v); }, [isCtrl, onChange]);
+  return [state, set] as const;
+}
+
+export interface SwitchProps extends Omit<React.HTMLAttributes<HTMLButtonElement>, "onChange"> {
   checked?: boolean;
   defaultChecked?: boolean;
-  onCheckedChange?: (checked: boolean) => void;
+  onCheckedChange?: (checked:boolean)=>void;
+  disabled?: boolean;
+  size?: "sm" | "md";
   id?: string;
 }
 
-export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
-  ({ label, checked, defaultChecked, onCheckedChange, id, ...rest }, ref) => {
-    const [internal, setInternal] = React.useState(!!defaultChecked);
-    const isControlled = checked !== undefined;
-    const value = isControlled ? !!checked : internal;
-    const toggle = () => {
-      const next = !value;
-      if (!isControlled) setInternal(next);
-      onCheckedChange?.(next);
-    };
-    const inputId = id ?? React.useId();
+export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(function Switch(
+  { checked, defaultChecked, onCheckedChange, disabled, size="md", id, className, ...rest }, ref
+){
+  const [on, setOn] = useControllable({ value: checked, defaultValue: defaultChecked, onChange: onCheckedChange });
+  const toggle = React.useCallback(() => { if (!disabled) setOn(!on); }, [disabled, on, setOn]);
 
-    return (
-      <label className="aui-switch" data-checked={value} htmlFor={inputId}>
-        <input
-          ref={ref}
-          id={inputId}
-          className="aui-switch__input"
-          role="switch"
-          aria-checked={value}
-          type="checkbox"
-          checked={isControlled ? checked : internal}
-          onChange={toggle}
-          {...rest}
-        />
-        <span className="aui-switch__track" aria-hidden="true"><span className="aui-switch__thumb" /></span>
-        {label && <span>{label}</span>}
-      </label>
-    );
-  }
-);
-Switch.displayName = "Switch";
-export default Switch;
+  return (
+    <button
+      ref={ref}
+      id={id}
+      type="button"
+      role="switch"
+      aria-checked={on}
+      aria-disabled={disabled || undefined}
+      className={cx("aui-switch", `sz-${size}`, on && "is-on", disabled && "is-disabled", className)}
+      onClick={toggle}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } }}
+      {...rest}
+    >
+      <span className="aui-switch__track"><span className="aui-switch__thumb" /></span>
+    </button>
+  );
+});

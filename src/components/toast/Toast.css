@@ -1,8 +1,14 @@
 :root {
+  /* Fallbacks; these can be overridden by your design tokens */
   --aui-toast-bg: #0b1220;
   --aui-toast-fg: #e5e7eb;
   --aui-toast-muted: #94a3b8;
   --aui-toast-border: rgba(148,163,184,.3);
+
+  --aui-color-accent: #2563eb;  /* fallback accent */
+  --aui-color-success: #16a34a;
+  --aui-color-warning: #d97706;
+  --aui-color-danger:  #dc2626;
 }
 
 .aui-toast-viewport {
@@ -28,13 +34,15 @@
   grid-auto-columns: 1fr auto;
   align-items: start;
   gap: 10px;
-  padding: 12px 12px;
+  padding: 12px 12px 14px;
   border-radius: 12px;
   background: var(--aui-toast-bg);
   color: var(--aui-toast-fg);
   border: 1px solid var(--aui-toast-border);
   box-shadow: 0 10px 40px rgba(2,6,23,.35);
   animation: toast-in .18s ease both;
+  position: relative;
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -58,12 +66,36 @@
 .aui-toast__btn--action { border-color: rgba(255,255,255,.28); }
 .aui-toast__btn--close  { width: 28px; padding: 0; }
 
-.aui-toast.is-success { --aui-toast-bg: #052e1d; --aui-toast-border: rgba(16,185,129,.35); }
-.aui-toast.is-warning { --aui-toast-bg: #2b2206; --aui-toast-border: rgba(251,191,36,.35); }
-.aui-toast.is-danger  { --aui-toast-bg: #2e0a0a; --aui-toast-border: rgba(239,68,68,.35); }
+/* Variants */
+.aui-toast.is-success { --aui-toast-border: rgba(16,185,129,.35); }
+.aui-toast.is-warning { --aui-toast-border: rgba(251,191,36,.35); }
+.aui-toast.is-danger  { --aui-toast-border: rgba(239,68,68,.35); }
 
 /* Light theme fallback if page is light */
-body:not(.dark) .aui-toast { --aui-toast-bg:#fff; --aui-toast-fg:#0f172a; --aui-toast-muted:#475569; --aui-toast-border:#e2e8f0; }
-body:not(.dark) .aui-toast.is-success { --aui-toast-border: rgba(16,185,129,.35); }
-body:not(.dark) .aui-toast.is-warning { --aui-toast-border: rgba(251,191,36,.35); }
-body:not(.dark) .aui-toast.is-danger  { --aui-toast-border: rgba(239,68,68,.35); }
+body:not(.dark) .aui-toast {
+  --aui-toast-bg:#fff; --aui-toast-fg:#0f172a; --aui-toast-muted:#475569; --aui-toast-border:#e2e8f0;
+}
+
+/* Progress bar (bottom) */
+.aui-toast__progress {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background: var(--aui-toast-progress, var(--aui-color-accent));
+  transform-origin: left center;
+  animation: toast-progress var(--aui-toast-dur, 4000ms) linear both;
+}
+.aui-toast.is-success .aui-toast__progress { --aui-toast-progress: var(--aui-color-success); }
+.aui-toast.is-warning .aui-toast__progress { --aui-toast-progress: var(--aui-color-warning); }
+.aui-toast.is-danger  .aui-toast__progress { --aui-toast-progress: var(--aui-color-danger); }
+
+@keyframes toast-progress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* Pause the progress animation on hover/drag */
+.aui-toast.is-hover .aui-toast__progress,
+.aui-toast.is-dragging .aui-toast__progress { animation-play-state: paused; }
+
+/* Swipe-to-dismiss feel */
+.aui-toast.is-dragging { transition: none; }

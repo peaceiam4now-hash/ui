@@ -1,16 +1,49 @@
+:root {
+  --aui-switch-on: #22c55e;
+  --aui-switch-off: #cbd5e1;
+  --aui-switch-thumb: #fff;
+  --aui-switch-focus: rgba(37,99,235,.22);
+}
+
 .aui-switch {
-  display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  outline: none;
 }
+
+.aui-switch.is-disabled { cursor: not-allowed; opacity: .6; }
+
 .aui-switch__track {
-  inline-size: 44px; block-size: 26px; border-radius: 999px;
-  background: var(--aui-color-border); position: relative; transition: background var(--aui-duration-fast) var(--aui-ease-standard);
+  position: relative;
+  display: inline-block;
+  background: var(--aui-switch-off);
+  border-radius: 999px;
+  transition: background .12s ease;
 }
+
 .aui-switch__thumb {
-  inline-size: 22px; block-size: 22px; border-radius: 50%;
-  background: #fff; position: absolute; top: 2px; left: 2px;
-  box-shadow: var(--aui-shadow);
-  transition: transform var(--aui-duration-fast) var(--aui-ease-standard);
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 18px; height: 18px;
+  background: var(--aui-switch-thumb);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  transition: transform .14s ease;
 }
-.aui-switch[data-checked="true"] .aui-switch__track { background: var(--aui-color-primary); }
-.aui-switch[data-checked="true"] .aui-switch__thumb { transform: translateX(18px); }
-.aui-switch__input { position: absolute; opacity: 0; pointer-events: none; }
+
+.aui-switch.sz-sm .aui-switch__track { width: 36px; height: 22px; }
+.aui-switch.sz-md .aui-switch__track { width: 44px; height: 26px; }
+.aui-switch.sz-sm.is-on .aui-switch__thumb { transform: translateX(14px); }
+.aui-switch.sz-md.is-on .aui-switch__thumb { transform: translateX(18px); }
+
+.aui-switch.is-on .aui-switch__track { background: var(--aui-switch-on); }
+
+.aui-switch:focus-visible .aui-switch__track {
+  box-shadow: 0 0 0 4px var(--aui-switch-focus);
+}

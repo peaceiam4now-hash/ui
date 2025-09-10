@@ -8,10 +8,8 @@ export default { title: "Feedback/Toast" };
 function Demo() {
   const { push, clear } = useToast();
   const fire = (variant, title, description) =>
-    push({
-      variant, title, description, duration: 4000,
-      action: { label: "Undo", onClick: () => push({ title: "Undone", variant: "default" }) },
-    });
+    push({ variant, title, description, duration: 4000,
+           action: { label: "Undo", onClick: () => push({ title: "Undone", variant: "default" }) } });
 
   return (
     <div style={{ display: "grid", gap: 8 }}>
@@ -34,14 +32,14 @@ function Demo() {
 
 export const Basic = () => {
   const [host, setHost] = React.useState(null);
+  React.useEffect(() => { if (host) toast.info("Hello!", "Toasts are mounted in-canvas."); }, [host]);
+
   return (
     <div style={{ minHeight: "120vh", padding: 16, background: "linear-gradient(180deg,#f8fafc,#eef2ff)", position: "relative" }}>
       <div ref={setHost} />
-      {host && (
-        <ToastProvider position="top-right" container={host}>
-          <Demo />
-        </ToastProvider>
-      )}
+      <ToastProvider position="top-right" container={host ?? undefined}>
+        <Demo />
+      </ToastProvider>
     </div>
   );
 };
@@ -51,11 +49,9 @@ export const BottomCenter = () => {
   return (
     <div style={{ minHeight: "80vh", padding: 16, position: "relative" }}>
       <div ref={setHost} />
-      {host && (
-        <ToastProvider position="bottom-center" container={host}>
-          <Demo />
-        </ToastProvider>
-      )}
+      <ToastProvider position="bottom-center" container={host ?? undefined}>
+        <Demo />
+      </ToastProvider>
     </div>
   );
 };

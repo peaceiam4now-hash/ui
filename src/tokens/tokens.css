@@ -51,3 +51,12 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* ---- Toast / Feedback tokens (AstronautUI) ---- */
+:root {
+  /* Map your design tokens here if present; the fallback hexes keep things working out of the box */
+  --aui-color-accent: var(--accent-600, #2563eb);
+  --aui-color-success: var(--success-600, #16a34a);
+  --aui-color-warning: var(--warning-600, #d97706);
+  --aui-color-danger:  var(--danger-600,  #dc2626);
+}
