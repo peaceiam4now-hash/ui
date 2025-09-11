@@ -1,0 +1,42 @@
+.aui-checkbox {
+  --_size: 1.125rem;
+  --_radius: var(--aui-radius-sm, 6px);
+  --_border: var(--aui-color-border, #353b44);
+  --_bg: var(--aui-color-surface, #0f1216);
+  --_fg: var(--aui-color-text, #e7eef9);
+  --_brand: var(--aui-color-primary, #2b6fff);
+
+  display: inline-flex; gap: .625rem; align-items: flex-start; cursor: pointer; user-select: none;
+  color: var(--_fg);
+}
+.aui-checkbox.is-disabled { opacity: .6; cursor: not-allowed; }
+.aui-checkbox.size-sm { --_size: 1rem; }
+.aui-checkbox.size-lg { --_size: 1.25rem; }
+
+.aui-checkbox__input { position: absolute; opacity: 0; pointer-events: none; }
+
+.aui-checkbox__control {
+  width: var(--_size); height: var(--_size); border-radius: var(--_radius);
+  border: 1px solid var(--_border); background: var(--_bg); box-shadow: inset 0 0 0 2px transparent;
+  transition: box-shadow .15s ease, border-color .15s ease, background .15s ease;
+  display: inline-block; position: relative; flex: 0 0 auto;
+}
+.aui-checkbox__input:focus-visible + .aui-checkbox__control { box-shadow: 0 0 0 3px rgba(43,111,255,.35); }
+.aui-checkbox__input:checked + .aui-checkbox__control { background: var(--_brand); border-color: var(--_brand); }
+.aui-checkbox__input:indeterminate + .aui-checkbox__control { background: var(--_brand); border-color: var(--_brand); }
+
+.aui-checkbox__control::after {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: 55%; height: 55%; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 10"><path d="M1 5l3 3 7-7" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center / contain;
+  background: white; opacity: 0; transform: scale(.6); transition: .15s ease;
+}
+.aui-checkbox__input:checked + .aui-checkbox__control::after { opacity: 1; transform: scale(1); }
+
+/* indeterminate bar */
+.aui-checkbox__input:indeterminate + .aui-checkbox__control::after {
+  mask: none; width: 70%; height: 2px; background: white; border-radius: 1px;
+}
+
+.aui-checkbox__text { display: grid; gap: .125rem; line-height: 1.2; }
+.aui-checkbox__label { font-weight: 600; }
+.aui-checkbox__description { color: var(--aui-color-text-muted, #a6b0be); font-size: .875rem; }

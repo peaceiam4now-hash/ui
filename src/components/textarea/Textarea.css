@@ -1,0 +1,16 @@
+.aui-textarea { position: relative; display: inline-grid; width: 100%; }
+.aui-textarea__control {
+  width: 100%; min-height: 96px; padding: .625rem .75rem; line-height: 1.45;
+  border-radius: var(--aui-radius-md, 10px);
+  border: 1px solid var(--aui-color-border, #353b44);
+  background: var(--aui-color-surface, #0f1216);
+  color: var(--aui-color-text, #e7eef9);
+  outline: none; transition: border-color .15s ease, box-shadow .15s ease;
+}
+.aui-textarea.size-sm .aui-textarea__control { min-height: 72px; font-size: .925rem; }
+.aui-textarea.size-lg .aui-textarea__control { min-height: 124px; font-size: 1.05rem; }
+.aui-textarea__control:focus { border-color: var(--aui-color-primary, #2b6fff); box-shadow: 0 0 0 3px rgba(43,111,255,.25); }
+.aui-textarea__control::placeholder { color: var(--aui-color-text-muted, #98a2af); }
+.aui-textarea__count {
+  position: absolute; right: .5rem; bottom: .375rem; font-size: .75rem; color: var(--aui-color-text-muted, #98a2af);
+}
