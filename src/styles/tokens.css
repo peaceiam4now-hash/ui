@@ -1,21 +1,68 @@
 :root {
-  --aui-color-surface: #0b0e13;          /* deep space */
-  --aui-color-surface-2: #0f1216;
+  /* Palette (space greys + blues) */
+  --aui-color-bg: #0b0e13;
+  --aui-color-surface: #0f1216;
+  --aui-color-surface-2: #131821;
+  --aui-color-overlay: #111623;
+  --aui-color-border: #2a313a;
+
   --aui-color-text: #e7eef9;
   --aui-color-text-muted: #9aa6b2;
-  --aui-color-border: #2a313a;
-  --aui-color-primary: #2b6fff;          /* royal/space blue */
+
+  --aui-color-primary: #2b6fff;   /* royal/space blue */
+  --aui-color-primary-600: #1f56cc;
+  --aui-color-success: #2ecc71;
+  --aui-color-warning: #f5a623;
+  --aui-color-danger:  #ff4d4f;
+
+  /* Typography */
+  --aui-font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --aui-font-size-sm: .875rem;
+  --aui-font-size-md: 1rem;
+  --aui-font-size-lg: 1.125rem;
+
+  /* Radii */
   --aui-radius-sm: 6px;
   --aui-radius-md: 10px;
   --aui-radius-lg: 16px;
+  --aui-radius-xl: 22px;
+
+  /* Spacing (t-shirt) */
+  --aui-space-1: 4px;
+  --aui-space-2: 8px;
+  --aui-space-3: 12px;
+  --aui-space-4: 16px;
+  --aui-space-5: 20px;
+  --aui-space-6: 24px;
+
+  /* Shadows */
+  --aui-shadow-1: 0 1px 2px rgba(0,0,0,.25);
+  --aui-shadow-2: 0 6px 18px rgba(0,0,0,.35);
+  --aui-shadow-3: 0 24px 60px rgba(0,0,0,.45);
+
+  /* Z-index */
+  --aui-z-tooltip: 50;
+  --aui-z-popover: 60;
+  --aui-z-modal: 70;
+  --aui-z-toast: 80;
+
+  /* Motion */
+  --aui-ease: cubic-bezier(.2,.7,.2,1);
+  --aui-duration-1: 120ms;
+  --aui-duration-2: 180ms;
+  --aui-duration-3: 260ms;
 }
+
+/* Light scheme */
 @media (prefers-color-scheme: light) {
   :root {
-    --aui-color-surface: #ffffff;
-    --aui-color-surface-2: #f7f9fc;
+    --aui-color-bg: #ffffff;
+    --aui-color-surface: #f8fafc;
+    --aui-color-surface-2: #eef2f7;
+    --aui-color-overlay: #ffffff;
+    --aui-color-border: #d7dde5;
+
     --aui-color-text: #101418;
     --aui-color-text-muted: #5a6673;
-    --aui-color-border: #d7dde5;
-    --aui-color-primary: #2b6fff;
   }
 }
