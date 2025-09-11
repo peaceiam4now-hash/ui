@@ -1,5 +1,13 @@
-import "../src/tokens/tokens.css";
-import "../src/styles/reset.css";
-export const parameters = {
-  controls: { expanded: true }
+// .storybook/preview.ts
+import type { Preview } from '@storybook/react';
+
+const preview: Preview = {
+  parameters: {
+    a11y: {
+      // Keep it simple: scan the #storybook-root
+      element: '#storybook-root',
+    },
+  },
 };
+
+export default preview;
