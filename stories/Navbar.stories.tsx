@@ -1,70 +1,34 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import * as React from "react";
-import { Navbar } from "../src/components/navbar/Navbar";
-import { Button } from "../src/components/button/Button";
-import { Input } from "../src/components/input/Input";
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
-const items = [
-  { label: "Home", href: "#", active: true },
-  { label: "Products", href: "#" },
-  { label: "Pricing", href: "#" },
-  { label: "Docs", href: "#" },
-];
-
-const Actions = () => (
-  <div style={{ display: "flex", gap: 8 }}>
-    <Input placeholder="Search…" style={{ width: 180 }} aria-label="Search" />
-    <Button>Sign in</Button>
-    <Button >Get started</Button>
-  </div>
-);
-
-const meta: Meta = { title: "Navigation/Navbar" };
+const meta: Meta = {
+  title: 'Navigation/Navbar',
+  parameters: { layout: 'fullscreen' },
+};
 export default meta;
 
-export const Basic: StoryObj = {
-  render: () => (
-    <div style={{ minHeight: "150vh", background: "linear-gradient(180deg,#f8fafc,#eef2ff)" }}>
-      <Navbar brand={<b>AstronautUI</b>} items={items} actions={<Actions/>} />
-      <main style={{ padding: 16 }}>
-        <p>Scroll to see the elevate-on-scroll shadow.</p>
-      </main>
-    </div>
-  )
-};
+type Story = StoryObj;
 
-export const DarkTransparentOverHero: StoryObj = {
+export const Basic: Story = {
   render: () => (
-    <div style={{ minHeight: "150vh", background: "url('https://picsum.photos/seed/space/1600/900') center/cover no-repeat" }}>
-      <Navbar
-        brand={<b style={{ letterSpacing: ".5px" }}>AstronautUI</b>}
-        items={items}
-        actions={<Button >Launch</Button>}
-        colorScheme="dark"
-        transparent
-        position="fixed"
-      />
-      <main style={{ paddingTop: 100, color: "white", textShadow: "0 2px 8px rgba(0,0,0,.5)" }}>
-        <h1>Hero Section</h1>
-        <p>Navbar overlays this background and uses dark scheme.</p>
-      </main>
-    </div>
-  )
-};
-
-export const CompactContainerAndSticky: StoryObj = {
-  render: () => (
-    <div style={{ minHeight: "150vh" }}>
-      <Navbar
-        brand={<div style={{display:"flex",alignItems:"center",gap:8}}><span>🚀</span><b>AstronautUI</b></div>}
-        items={[{label:"Dashboard",href:"#",active:true},{label:"Team",href:"#"}, {label:"Projects",href:"#"}]}
-        actions={<Button>Invite</Button>}
-stories/helpers/ThemeSwitcher.tsx        containerWidth={960}
-        position="sticky"
-      />
-      <div style={{ padding: 16 }}>
-        <p>Container width limited to 960px.</p>
-      </div>
-    </div>
-  )
+    <header
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '12px 16px',
+        borderBottom: '1px solid #e5e7eb',
+        position: 'sticky',
+        top: 0,
+        background: 'var(--aui-color-surface, #fff)',
+      }}
+    >
+      <div style={{ fontWeight: 600 }}>AstronautUI</div>
+      <nav style={{ display: 'flex', gap: 12 }}>
+        <a href="#" style={{ textDecoration: 'none' }}>Docs</a>
+        <a href="#" style={{ textDecoration: 'none' }}>Components</a>
+        <a href="#" style={{ textDecoration: 'none' }}>GitHub</a>
+      </nav>
+    </header>
+  ),
 };

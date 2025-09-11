@@ -45,7 +45,12 @@
     "test:watch": "vitest",
     "lint": "echo 'add eslint later'",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "tsc": "tsc --noEmit",
+    "storybook:dev": "storybook dev -p 6014",
+    "storybook:build": "build-storybook -o storybook-static",
+    "a11y:sb8": "test-storybook --url http://localhost:6014 --maxWorkers=50%",
+    "a11y:local": "concurrently -k -n SB,A11Y \"pnpm storybook:dev\" \"sleep 3 && pnpm a11y:sb8\""
   },
   "dependencies": {
     "react": "^18.3.1",
