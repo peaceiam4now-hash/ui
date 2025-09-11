@@ -1,0 +1,21 @@
+
+---
+
+### 3. `stories/docs/Docs-Overlays.mdx`
+```mdx
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Guides/Overlays" />
+
+# Overlays: Tooltip & Popover
+
+## Tooltip
+
+- Triggered on **hover/focus**; uses `aria-describedby` + `role="tooltip"`.
+- Placements: `top | bottom | left | right`.
+- No portal; positioned relative to the trigger wrapper.
+
+```tsx
+<Tooltip content="Copy to clipboard" placement="top">
+  <button>Copy</button>
+</Tooltip>
