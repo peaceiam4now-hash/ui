@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Guides/Forms Overview" />
+
+# Forms Overview
+
+Use **Field** (label/description/error wiring) together with these primitives:
+
+- **Input** — text inputs (sm/md/lg)
+- **Switch** — accessible toggle (role="switch")
+- **Checkbox** — supports `indeterminate`
+- **Radio / RadioGroup** — keyboard & group-controlled
+- **Textarea** — optional char counter
+- **Select** — native select with styled wrapper
+
+## Best practices
+
+- Use `label` + `aria-describedby` to connect help/error text.
+- Show errors inline—don’t rely on color alone.
+- Group radios in a `RadioGroup` and share a `name` for a11y.
+- Prefer **native** selects for mobile; custom menus can come later.
+
+## Examples
+
+### Checkbox
+
+```tsx
+<Checkbox
+  label="Accept terms"
+  description="You can revoke any time."
+  defaultChecked
+/>
