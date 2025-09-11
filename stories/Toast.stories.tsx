@@ -21,7 +21,7 @@ export const Placeholder: Story = {
     <div style={{ padding: 16 }}>
       <h3 style={{ margin: 0 }}>Toast demo placeholder</h3>
       <p style={{ marginTop: 8 }}>
-        Replace this story once the <code>toast</code> helper and host API are finalized.
+        Replace this story once the <code>toast</code> host + variants are finalized.
       </p>
     </div>
   ),
