@@ -31,3 +31,16 @@ stories/Toast.stories.tsx(39,33): error TS2345: Argument of type 'HTMLDivElement
 stories/Toast.stories.tsx(53,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
   Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
     Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+stories/Toast.stories.tsx(12,7): error TS2322: Type 'string' is not assignable to type 'ToastVariant | undefined'.
+stories/Toast.stories.tsx(39,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+stories/Toast.stories.tsx(53,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+tests/Input.test.tsx(8,17): error TS2322: Type '{ label: string; placeholder: string; }' is not assignable to type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement>'.
+  Property 'label' does not exist on type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement>'.
+tests/Input.test.tsx(15,17): error TS2322: Type '{ label: string; hint: string; error: string; }' is not assignable to type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement>'.
+  Property 'label' does not exist on type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement>'.
+tests/Input.test.tsx(24,17): error TS2322: Type '{ label: string; type: "password"; revealPasswordToggle: true; }' is not assignable to type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement>'.
+  Property 'label' does not exist on type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement>'.

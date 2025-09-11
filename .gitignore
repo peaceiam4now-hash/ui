@@ -3,3 +3,6 @@ node_modules
 .storybook-static
 .DS_Store
 coverage
+
+# Local logs
+.logs/
