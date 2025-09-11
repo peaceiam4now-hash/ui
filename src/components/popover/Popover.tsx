@@ -146,7 +146,7 @@ export function PopoverTrigger({ children }: { children: React.ReactNode }) {
 }
 
 /* Content */
-export interface PopoverContentProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PopoverContentProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   title?: React.ReactNode;
   showClose?: boolean;
 }

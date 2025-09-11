@@ -26,7 +26,7 @@ function useControllable({
   return [state, set] as const;
 }
 
-export interface DrawerProps extends React.HTMLAttributes<HTMLElement> {
+export interface DrawerProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;

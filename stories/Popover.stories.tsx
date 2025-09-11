@@ -35,8 +35,8 @@ export const Basic = () => (
       </PopoverTrigger>
       <PopoverContent title="Quick actions">
         <div style={{ display: "grid", gap: 8 }}>
-          <Button size="sm">Run</Button>
-          <Button size="sm" variant="secondary">Preview</Button>
+          <Button>Run</Button>
+          <Button >Preview</Button>
         </div>
       </PopoverContent>
     </Popover>
@@ -54,7 +54,7 @@ export const FormInside = () => (
           <div style={{ display: "grid", gap: 8 }}>
             <label> Name <input style={{ width: 220 }} type="text" placeholder="My item" /> </label>
             <label> Private <input type="checkbox" /> </label>
-            <Button size="sm" type="submit">Create</Button>
+            <Button type="submit">Create</Button>
           </div>
         </form>
       </PopoverContent>

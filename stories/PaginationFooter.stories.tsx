@@ -41,7 +41,7 @@ export const Controlled: StoryObj = {
 export const CompactAndSmall: StoryObj = {
   render: () => (
     <div style={{ padding: 16 }}>
-      <PaginationFooter totalItems={300} defaultPageSize={10} size="sm" compact />
+      <PaginationFooter totalItems={300} defaultPageSize={10} compact />
     </div>
   ),
 };

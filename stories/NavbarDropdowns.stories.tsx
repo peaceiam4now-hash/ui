@@ -34,7 +34,7 @@ export const Dropdowns: StoryObj = {
       <Navbar
         brand={<b>AstronautUI</b>}
         items={items}
-        actions={<Button size="sm" variant="primary">Get started</Button>}
+        actions={<Button >Get started</Button>}
         forceDesktop
       />
       <main style={{ padding: 16 }}>

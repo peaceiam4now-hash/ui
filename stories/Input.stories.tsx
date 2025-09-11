@@ -16,7 +16,7 @@ export const Basic = () => (
     </Field>
     <div style={{ display: "flex", gap: 8 }}>
       <Button>Submit</Button>
-      <Button variant="secondary">Cancel</Button>
+      <Button >Cancel</Button>
     </div>
   </div>
 );
@@ -24,7 +24,7 @@ export const Basic = () => (
 export const Sizes = () => (
   <div style={{ padding: 24, display: "grid", gap: 12, maxWidth: 420 }}>
     <Field label="Small">
-      <Input size="sm" placeholder="Small size" />
+      <Input placeholder="Small size" />
     </Field>
     <Field label="Medium (default)">
       <Input size="md" placeholder="Medium size" />

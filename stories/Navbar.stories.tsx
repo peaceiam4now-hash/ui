@@ -14,8 +14,8 @@ const items = [
 const Actions = () => (
   <div style={{ display: "flex", gap: 8 }}>
     <Input placeholder="Search…" style={{ width: 180 }} aria-label="Search" />
-    <Button size="sm">Sign in</Button>
-    <Button size="sm" variant="primary">Get started</Button>
+    <Button>Sign in</Button>
+    <Button >Get started</Button>
   </div>
 );
 
@@ -39,7 +39,7 @@ export const DarkTransparentOverHero: StoryObj = {
       <Navbar
         brand={<b style={{ letterSpacing: ".5px" }}>AstronautUI</b>}
         items={items}
-        actions={<Button size="sm" variant="primary">Launch</Button>}
+        actions={<Button >Launch</Button>}
         colorScheme="dark"
         transparent
         position="fixed"
@@ -58,8 +58,8 @@ export const CompactContainerAndSticky: StoryObj = {
       <Navbar
         brand={<div style={{display:"flex",alignItems:"center",gap:8}}><span>🚀</span><b>AstronautUI</b></div>}
         items={[{label:"Dashboard",href:"#",active:true},{label:"Team",href:"#"}, {label:"Projects",href:"#"}]}
-        actions={<Button size="sm">Invite</Button>}
-        containerWidth={960}
+        actions={<Button>Invite</Button>}
+stories/helpers/ThemeSwitcher.tsx        containerWidth={960}
         position="sticky"
       />
       <div style={{ padding: 16 }}>

@@ -4,7 +4,7 @@ import { cx } from "../../utils/cx";
 
 type Size = "sm" | "md" | "lg";
 
-export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix'> {
   size?: Size;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;

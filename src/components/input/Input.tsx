@@ -2,7 +2,7 @@ import * as React from "react";
 import "./Input.css";
 import { cx } from "../../utils/cx";
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: "sm" | "md" | "lg";
 }
 

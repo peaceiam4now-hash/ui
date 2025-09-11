@@ -20,7 +20,7 @@ export const Basic = () => {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <Switch size="sm" />
+        <Switch />
         <span>Small size</span>
       </div>
 

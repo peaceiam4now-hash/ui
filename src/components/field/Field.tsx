@@ -27,7 +27,7 @@ export function Field({ label, description, error, required, className, children
   });
 
   return (
-    <div className={cx("aui-field", error && "is-invalid", className)}>
+    <div className={cx("aui-field", !!error && "is-invalid", className)}>
       {label && (
         <label className="aui-field__label" htmlFor={inputId}>
           {label}{required && <span className="aui-field__req" aria-hidden="true"> *</span>}

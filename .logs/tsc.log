@@ -1,0 +1,33 @@
+src/components/select/Select.tsx(7,18): error TS2430: Interface 'SelectProps' incorrectly extends interface 'Omit<SelectHTMLAttributes<HTMLSelectElement>, "size">'.
+  Types of property 'prefix' are incompatible.
+    Type 'ReactNode' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+stories/Toast.stories.tsx(12,7): error TS2322: Type 'string' is not assignable to type 'ToastVariant | undefined'.
+stories/Toast.stories.tsx(39,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+stories/Toast.stories.tsx(53,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+src/components/select/Select.tsx(7,18): error TS2430: Interface 'SelectProps' incorrectly extends interface 'Omit<SelectHTMLAttributes<HTMLSelectElement>, "size">'.
+  Types of property 'prefix' are incompatible.
+    Type 'ReactNode' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+stories/Toast.stories.tsx(12,7): error TS2322: Type 'string' is not assignable to type 'ToastVariant | undefined'.
+stories/Toast.stories.tsx(39,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+stories/Toast.stories.tsx(53,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+src/components/select/Select.tsx(7,18): error TS2430: Interface 'SelectProps' incorrectly extends interface 'Omit<SelectHTMLAttributes<HTMLSelectElement>, "size">'.
+  Types of property 'prefix' are incompatible.
+    Type 'ReactNode' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+stories/Toast.stories.tsx(12,7): error TS2322: Type 'string' is not assignable to type 'ToastVariant | undefined'.
+stories/Toast.stories.tsx(39,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.
+stories/Toast.stories.tsx(53,33): error TS2345: Argument of type 'HTMLDivElement | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'HTMLDivElement' is not assignable to type 'SetStateAction<null>'.
+    Type 'HTMLDivElement' provides no match for the signature '(prevState: null): null'.

@@ -4,7 +4,7 @@ import { cx } from "../../utils/cx";
 
 type Size = "sm" | "md" | "lg";
 
-export interface PaginationProps extends React.HTMLAttributes<HTMLElement> {
+export interface PaginationProps extends Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {
   count: number;                    // total pages (>= 1)
   page?: number;                    // controlled page
   defaultPage?: number;             // uncontrolled start page

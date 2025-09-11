@@ -30,8 +30,8 @@ export const Controlled: StoryObj = {
         <div>Current page: <strong>{page}</strong></div>
         <Pagination count={25} page={page} onChange={setPage} />
         <div style={{ display: "flex", gap: 8 }}>
-          <Button size="sm" onClick={() => setPage((p) => Math.max(1, p - 1))}>Prev</Button>
-          <Button size="sm" onClick={() => setPage((p) => Math.min(25, p + 1))}>Next</Button>
+          <Button onClick={() => setPage((p) => Math.max(1, p - 1))}>Prev</Button>
+          <Button onClick={() => setPage((p) => Math.min(25, p + 1))}>Next</Button>
         </div>
       </div>
     );
@@ -43,7 +43,7 @@ export const SizesAndOptions: StoryObj = {
     <div style={{ padding: 16, display: "grid", gap: 16 }}>
       <div>
         <h4>Small</h4>
-        <Pagination count={8} size="sm" />
+        <Pagination count={8} />
       </div>
       <div>
         <h4>Medium (no first/last)</h4>

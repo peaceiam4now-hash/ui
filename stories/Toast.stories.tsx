@@ -7,7 +7,7 @@ export default { title: "Feedback/Toast" };
 
 function Demo() {
   const { push, clear } = useToast();
-  const fire = (variant, title, description) =>
+  const fire = (variant: string, title: string, description: string) =>
     push({
       variant, title, description, duration: 4000,
       action: { label: "Undo", onClick: () => push({ title: "Undone", variant: "default" }) },
@@ -22,8 +22,8 @@ function Demo() {
         <Button onClick={() => fire("danger", "Error", "Something went wrong.")}>Danger</Button>
       </div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <Button variant="secondary" onClick={() => clear()}>Clear all</Button>
-        <Button variant="secondary" onClick={() => toast.success("Saved via global", "Used toast.success(...)")}>
+        <Button  onClick={() => clear()}>Clear all</Button>
+        <Button  onClick={() => toast.success("Saved via global", "Used toast.success(...)")}>
           Global helper
         </Button>
       </div>
@@ -36,7 +36,7 @@ export const Basic = () => {
   const [host, setHost] = React.useState(null);
   return (
     <div style={{ minHeight: "120vh", padding: 16, background: "linear-gradient(180deg,#f8fafc,#eef2ff)", position: "relative" }}>
-      <div ref={setHost} />
+      <div ref={(el) => setHost(el)} />
       {host && (
         <ToastProvider position="top-right" container={host}>
           <Demo />
@@ -50,7 +50,7 @@ export const BottomCenter = () => {
   const [host, setHost] = React.useState(null);
   return (
     <div style={{ minHeight: "80vh", padding: 16, position: "relative" }}>
-      <div ref={setHost} />
+      <div ref={(el) => setHost(el)} />
       {host && (
         <ToastProvider position="bottom-center" container={host}>
           <Demo />
