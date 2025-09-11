@@ -1,0 +1,69 @@
+name: ci
+
+on:
+  push:
+    branches: [ main, develop, feat/** ]
+  pull_request:
+
+jobs:
+  build-and-a11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node & PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+      - run: corepack enable
+
+      - name: Cache PNPM store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
+
+      - name: Build Storybook
+        run: pnpm build-storybook -o storybook-static
+
+      - name: Start Storybook (background)
+        run: |
+          npx http-server storybook-static -p 6014 --silent &
+          echo $! > sb.pid
+          sleep 2
+          curl -sSf http://localhost:6014/ >/dev/null
+
+      - name: A11y scan (SB8 runner)
+        run: pnpm exec test-storybook --url http://localhost:6014 --maxWorkers=50%
+
+      - name: Upload Storybook artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: storybook-static
+          path: storybook-static
+
+      - name: Upload logs (if any)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: a11y-logs
+          path: .logs
+
+      - name: Stop Storybook
+        if: always()
+        run: kill $(cat sb.pid) || true
